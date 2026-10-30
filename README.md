@@ -25,11 +25,10 @@ git push -u origin main
 
 ## GitHub Codespaces
 
-Open the repository → **Code → Codespaces → Create codespace on main**. The devcontainer installs Android SDK 35 and Gradle 8.10.2. In the terminal:
+Open the repository → **Code → Codespaces → Create codespace on main**. The project uses the checked-in Gradle Wrapper (Gradle 8.9) and Android SDK 35. Use a compatible JDK (17 or 21); if the terminal defaults to an incompatible Java version, select an installed compatible JDK before building. Then run:
 
 ```bash
-source ~/.bashrc
-gradle --no-daemon assembleDebug
+./gradlew --no-daemon clean assembleDebug
 ```
 
 APK: `app/build/outputs/apk/debug/app-debug.apk`. Download via Codespaces file explorer or GitHub Actions artifact.
@@ -49,7 +48,7 @@ APK: `app/build/outputs/apk/debug/app-debug.apk`. Download via Codespaces file e
 
 - `app/src/main/java/com/smartarrange/app/MainActivity.java` — native UI, discovery and categorization.
 - `.github/workflows/build-apk.yml` — cloud APK build.
-- `.devcontainer/` — Codespaces Android toolchain.
+- `gradle/wrapper/` — checked-in Gradle Wrapper used by local and CI builds.
 
 ## Next development steps
 
